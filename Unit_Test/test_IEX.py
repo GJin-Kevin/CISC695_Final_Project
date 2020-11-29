@@ -5,8 +5,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-IEX_token = "sk_810077e9e17747c883f1fe238161dd1d"
-
 user1 = DataAPI("IEX", IEX_token)
 
 # path_aapl2y = r'D:\K\HU\HU - Courses\CISC 695 Research Methodology and Writing\Assignments\sample_data\aapl2y.csv'
