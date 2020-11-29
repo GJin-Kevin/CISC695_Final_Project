@@ -47,35 +47,44 @@ class Test_Backtesting(unittest.TestCase):
         df = DataAPI.yahoo_pricing_data('AAPL', start_date='2019-01-01', end_date= '2020-10-30')
         return df
 
-    def test_SMA_bulk_stocks(self):
+    def test_SMA_bulk_parameters(self):
         
         df = self.get_data()
         Bt = Backtesting(df)
         
-        result = Bt.SMA_bulk_stocks()
+        result = Bt.SMA_bulk_parameters()
         self.assertIsInstance(result, pd.DataFrame)
 
-    def test_SMA_single_stock(self):
+    def test_SMA_single_parameter(self):
         
         df = self.get_data()
         Bt = Backtesting(df)
         
-        result = Bt.SMA_single_stock()
+        result = Bt.SMA_single_parameter()
         self.assertIsInstance(result, pd.DataFrame)
 
-    def test_RSI_single_stock(self):
+    def test_RSI_single_parameter(self):
         
         df = self.get_data()
         Bt = Backtesting(df)
         
-        result = Bt.RSI_single_stock()
+        result = Bt.RSI_single_parameter()
         self.assertIsInstance(result, pd.DataFrame)
+
+    def test_Bollinger_single_parameter(self):
+        
+        df = self.get_data()
+        Bt = Backtesting(df)
+        
+        result = Bt.Bollinger_single_parameter()
+        self.assertIsInstance(result, pd.DataFrame)
+
 
     def test_backtesting(self):
         
         df = self.get_data()
         Bt = Backtesting(df)
-        df = Bt.SMA_single_stock()
+        df = Bt.SMA_single_parameter()
 
         result = Bt.backtesting(df)
         self.assertIsInstance(result, pd.DataFrame)    
@@ -92,7 +101,7 @@ class Test_Visualization(unittest.TestCase):
         df = self.get_data()
 
         Bt = Backtesting(df)
-        df = Bt.SMA_single_stock()
+        df = Bt.SMA_single_parameter()
 
         vi = Visualization(df)
         result = vi.sma_plot_result()
@@ -105,7 +114,7 @@ class Test_Visualization(unittest.TestCase):
         df = self.get_data()
 
         Bt = Backtesting(df)
-        df = Bt.RSI_single_stock()
+        df = Bt.RSI_single_parameter()
 
         vi = Visualization(df)
         result = vi.rsi_plot_result()

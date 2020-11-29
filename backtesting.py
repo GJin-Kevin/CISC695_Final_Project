@@ -50,7 +50,7 @@ class Backtesting:
         count = 1
         for i in sma_short:
             for j in sma_long:
-                df = self.SMA_single_stock(i, j)
+                df = self.SMA_single_parameter(i, j)
                 pd_result = pd_result.append({
                     'Back-testing Index': count, 
                     'sma_short': i, 
