@@ -223,7 +223,26 @@ class DataAPI:
 
         return df_cashflow
 
-     def SF_Derived_Ratios(self, sec_id: str = 'AAPL', period : str = 'quarterly', market :str = 'us') -> pd.DataFrame:
+    def SF_ratios(self, sec_id: str = 'AAPL', period : str = 'annual', market :str = 'us') -> pd.DataFrame:
+        """[summary] Load cash flow statement.
+
+        Args:
+            sec_id (str, optional): [stock ticker]. Defaults to 'AAPL'.
+            period (str, optional): [annual, quarterly]. Defaults to 'quarterly'.
+            market (str, optional): [us, de, etc]. Defaults to 'us'.
+
+        Returns:
+            pd.DataFrame: 
+        """        
+
+        df_ra = simfin.load_derived(variant = period, market = market)
+
+        df_ra = df_ra.loc[sec_id]
+
+        return df_ra
+
+
+    def SF_Derived_Ratios(self, sec_id: str = 'AAPL', period : str = 'quarterly', market :str = 'us') -> pd.DataFrame:
         """[summary] Load ratios data.
 
         Args:
